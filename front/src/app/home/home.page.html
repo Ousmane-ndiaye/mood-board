@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>
+      MOOD BOARD
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding content-page">
+      On est le <b>{{ dayName }} {{ dayNumber }} {{ monthName }} {{ year }}</b>.
+    <ion-grid *ngIf="!isFinish">
+      <ion-row>
+        <ion-col size="12" text-center>
+            <ion-card>
+              <ion-card-content class="theme-du-jour">
+                <ion-card-title>Question :</ion-card-title>
+                <p style="font-weight: bold;">Comment c'est passé la journée ?</p>
+              </ion-card-content>
+            </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" text-center>
+          <ion-card (click)="setHumeur(-1)">
+            <ion-card-header>
+              <ion-img src="assets/emojis/unhappy-face.png"></ion-img>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <ion-card-title>Mal</ion-card-title>
+            </ion-card-content>
+          </ion-card>
+          <ion-icon name="checkmark" [ngStyle]="{'visibility': humeur == -1 ? 'visible' : ' hidden'}" class="icon-checked"></ion-icon>
+        </ion-col>
+        <ion-col size="4" text-center>
+          <ion-card (click)="setHumeur(0)">
+            <ion-card-header>
+              <ion-img src="assets/emojis/neutre-face.png"></ion-img>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <ion-card-title>Neutre</ion-card-title>
+            </ion-card-content>
+          </ion-card>
+          <ion-icon name="checkmark" [ngStyle]="{'visibility': humeur == 0 ? 'visible' : ' hidden'}" class="icon-checked"></ion-icon>
+        </ion-col>
+        <ion-col size="4" text-center>        
+          <ion-card (click)="setHumeur(1)">
+            <ion-card-header>
+              <ion-img src="assets/emojis/happy-face.png"></ion-img>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <ion-card-title>Heureux</ion-card-title>
+            </ion-card-content>
+          </ion-card>
+          <ion-icon name="checkmark" [ngStyle]="{'visibility': humeur == 1 ? 'visible' : ' hidden'}" class="icon-checked"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item [ngStyle]="{'visibility': humeur == -1 ? 'visible' : ' hidden'}">
+            <ion-textarea rows="5" name="comment" #comment placeholder="Entrer un commentaire..."></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-button (click)="validUserHumeur(comment.value)" style="--background: #008080; margin-top: 50px;" [disabled]="humeur == null || humeur == -1 && comment.value == ''" expand="full">Valider</ion-button>
+    </ion-grid>
+
+    <ion-grid *ngIf="isFinish" style="margin-top: 40%;">
+      <ion-row>
+        <ion-col size="12" text-center>
+            <ion-icon name="checkmark-circle-outline" style="font-size: 6em; color: #008080;"></ion-icon>
+            <ion-title text-center style="font-size: 3em; color: #008080;">Merci !</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

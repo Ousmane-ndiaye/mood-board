@@ -1,0 +1,35 @@
+ion-toolbar {
+	--background: #ff6600;
+	--color: #ffffff;
+}
+
+ion-content {
+	--background: #eee;
+}
+
+ion-item {
+	--highlight-color-focused: #ff6600;
+}
+
+ion-card-header,
+ion-card-content {
+	padding: 5px;
+}
+
+ion-card-header {
+	--background: #ffffff;
+}
+
+ion-card-content {
+	background: #ff6600;
+}
+
+.icon-checked {
+	font-size: 30px;
+	color: #008080;
+}
+
+ion-card-title {
+	--color: #ffffff;
+	font-size: 14px;
+}
